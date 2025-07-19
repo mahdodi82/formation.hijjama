@@ -112,7 +112,7 @@
     lucide.createIcons();
     const form = document.getElementById('my-form');
     const msg = document.getElementById('message');
-    const SCRIPT_URL = 'https://script.google.com/macros/s/…/exec';
+    const SCRIPT_URL = 'https://docs.google.com/spreadsheets/d/1RXRGXO2LlyOr18W5tyl-mXoO13e83LfDEO7xMolF348/edit?gid=1143695912#gid=1143695912';
     form.addEventListener('submit', e => {
       e.preventDefault();
       fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', body: new FormData(form) })
