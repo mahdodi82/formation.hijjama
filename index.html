@@ -24,10 +24,10 @@
   <!-- صور المنتج -->
   <section class="p-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
-      <img src="G:\مركز الصحة الرياضية\منتجات للبيع\Untitled Export\IMG_9967.jpg" alt="آلة تدليك 1" class="rounded shadow">
-      <img src="G:\مركز الصحة الرياضية\منتجات للبيع\Untitled Export\IMG_9969.jpg" alt="آلة تدليك 2" class="rounded shadow">
-      <img src="G:\مركز الصحة الرياضية\منتجات للبيع\Untitled Export\IMG_9973.jpg" alt="الرؤوس" class="rounded shadow">
-      <img src="G:\مركز الصحة الرياضية\منتجات للبيع\Untitled Export\IMG_9959.jpg" alt="غطاء قماشي" class="rounded shadow">
+      <img src="IMG_9967.jpg" alt="آلة تدليك 1" class="rounded shadow">
+      <img src="IMG_9969.jpg" alt="آلة تدليك 2" class="rounded shadow">
+      <img src="IMG_9973.jpg" alt="الرؤوس" class="rounded shadow">
+      <img src="IMG_9959.jpg" alt="غطاء قماشي" class="rounded shadow">
     </div>
   </section>
 
@@ -112,7 +112,7 @@
     lucide.createIcons();
     const form = document.getElementById('my-form');
     const msg = document.getElementById('message');
-    const SCRIPT_URL = 'https://docs.google.com/spreadsheets/d/1RXRGXO2LlyOr18W5tyl-mXoO13e83LfDEO7xMolF348/edit?gid=1143695912#gid=1143695912';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxkawuc8xbXBEFZjRj6NR8HygoR1-7e87ko1owxTBaXTAQJAIqH8lqo7-LXbjMokO0iaw/exec';
     form.addEventListener('submit', e => {
       e.preventDefault();
       fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', body: new FormData(form) })
