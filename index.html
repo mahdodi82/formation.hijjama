@@ -170,7 +170,6 @@
       <div id="formStatus" role="status" aria-live="polite" class="small" style="min-height:20px"></div>
 
       <form id="regForm" autocomplete="on" novalidate>
-        <input type="hidden" name="Timestamp" id="Timestamp">
 
         <div class="two">
           <div>
@@ -268,7 +267,7 @@
     const submitBtn = document.getElementById('submitBtn');
     const formStatus = document.getElementById('formStatus');
 
-    // هذا هو رابط Google Apps Script الخاص بك. يجب أن تستبدله بالرابط الذي تحصل عليه بعد النشر.
+    // **هام:** استبدل هذا الرابط برابط Google Apps Script الخاص بك.
     const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxvbz1IYro_L3wU2ci9qqFKp3KJ7xo2p6hIB2Epovcl8CnLahaNHEOoWUisMzF0zrbAuQ/exec';
 
     // show selected file name and simple preview for images
@@ -299,7 +298,7 @@
       return ()=> element.removeEventListener('keydown', handle);
     }
 
-    // form submit handler
+    // form submit handler (client-side only)
     form.addEventListener('submit', async (e)=>{
       e.preventDefault();
 
@@ -316,52 +315,50 @@
       const originalText = submitBtn.textContent;
       submitBtn.textContent = '...جارٍ الإرسال';
 
-      // prepare the data
       const formData = new FormData(form);
-      const name = formData.get('fullname') || '-';
-      const phone = formData.get('phone') || '-';
-      const exp = formData.get('experience') || '-';
-      // Add timestamp
-      formData.append('Timestamp', new Date().toLocaleString());
+      formData.append('Timestamp', new Date().toLocaleString()); // إضافة الوقت والتاريخ
 
-
-      try{
-        // send data to Google Apps Script
-        const res = await fetch(WEB_APP_URL, {
+      try {
+        const response = await fetch(WEB_APP_URL, {
           method: 'POST',
-          body: formData,
+          body: formData
         });
-        const data = await res.json();
-        if(data.result === 'success'){
-          // show inline success message
-          formStatus.textContent = 'تم استلام الطلب بنجاح. سيتم عرض ملخص.';
+        const result = await response.json();
+        
+        if(result.result === 'success'){
+          // Show success message
+          formStatus.textContent = 'تم استلام الطلب بنجاح.';
           formStatus.style.color = 'green';
-          // show modal summary
+
+          // Show modal summary
+          const name = formData.get('fullname') || '-';
+          const phone = formData.get('phone') || '-';
+          const exp = formData.get('experience') || '-';
           summary.innerHTML = `تم تسجيلك بنجاح في الدورة!<br><br>
           ملخص البيانات:<br>
           الاسم الكامل: <strong>${escapeHtml(name)}</strong><br>
           رقم الهاتف: <strong>${escapeHtml(phone)}</strong><br>
           مستوى الخبرة: <strong>${escapeHtml(exp)}</strong><br><br>
           سنتواصل معك قريبًا لتأكيد حجزك.`;
+          
           modal.classList.add('open');
           modal.setAttribute('aria-hidden','false');
-          const release = trapFocus(modal);
+          trapFocus(modal);
           closeModal.focus();
-        } else {
-          throw new Error('فشل إرسال البيانات: ' + data.message);
-        }
 
-      } catch(error){
+        } else {
+          throw new Error(result.message || 'فشل الإرسال.');
+        }
+      } catch (error) {
         console.error('Error:', error);
-        formStatus.textContent = `حدث خطأ: ${error.message}`;
+        formStatus.textContent = `حدث خطأ في الإرسال: ${error.message}`;
         formStatus.style.color = '#b32424';
         alert('حدث خطأ أثناء إرسال التسجيل. يرجى المحاولة مرة أخرى.');
-
       } finally {
-        // Re-enable the button
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
       }
+
     });
 
     closeModal.addEventListener('click', ()=>{
