@@ -5,18 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>تسجيل - دورة الحجامة العلاجية</title>
   <meta name="description" content="سجّل الآن في دورة الحجامة العلاجية — برنامج عملي ونظري مع شهادة معتمدة ومعايير سلامة وتعقيم. المقاعد محدودة." />
-  <!-- Open Graph / Social -->
   <meta property="og:title" content="دورة الحجامة العلاجية - تسجيل" />
   <meta property="og:description" content="سجّل الآن في دورة الحجامة العلاجية — برنامج عملي ونظري مع شهادة معتمدة ومعايير سلامة وتعقيم." />
   <meta property="og:image" content="https://images.unsplash.com/photo-1584467735874-44cc1f54d6b3?q=80&w=1600&auto=format&fit=crop" />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#0f766e" />
 
-  <!-- Fonts performance -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Structured data: Course / Event -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -170,7 +167,6 @@
       <h2 id="formTitle">نموذج التسجيل</h2>
       <div class="muted">املأ المعلومات لإحراز مقعدك — المقاعد محدودة</div>
 
-      <!-- Success / Error live region -->
       <div id="formStatus" role="status" aria-live="polite" class="small" style="min-height:20px"></div>
 
       <form id="regForm" autocomplete="on" novalidate>
@@ -190,9 +186,8 @@
         <div class="two">
           <div>
             <label for="phone">رقم الهاتف <span aria-hidden style="color:#c0392b">*</span></label>
-            <input id="phone" name="phone" type="tel" inputmode="tel"  />
-            <div id="phoneHelp" class="small">مثال صالح: +213 551234567 أو 055 12 34 56</div>
-            
+            <input id="phone" name="phone" type="text" placeholder="اكتب رقمك هنا" required aria-describedby="phoneHelp" />
+            <div id="phoneHelp" class="small">اكتب رقم الهاتف الذي تريد التواصل عليه.</div>
           </div>
           <div>
             <label for="email">البريد الإلكتروني</label>
@@ -238,7 +233,6 @@
   <section class="gallery-section" aria-labelledby="galleryTitle">
     <h2 id="galleryTitle">لحظات من الدورات السابقة</h2>
     <div class="image-grid" aria-hidden="false">
-      <!-- استخدمت loading=lazy وتقنيات بسيطة للسرعة -->
       <img loading="lazy" src="https://c.top4top.io/p_351011hhk8.jpg" alt="متدربون في دورة الحجامة العلاجية - تدريب عملي" width="800" height="550">
       <img loading="lazy" src="https://b.top4top.io/p_3510wy8uu7.jpg" alt="المدرب يشرف على تطبيق الحجامة" width="800" height="550">
       <img loading="lazy" src="https://a.top4top.io/p_3510w4u2y6.jpg" alt="نقاش عملي بين المتدربين" width="800" height="550">
@@ -272,7 +266,6 @@
     const summary = document.getElementById('summary');
     const submitBtn = document.getElementById('submitBtn');
     const formStatus = document.getElementById('formStatus');
-    const phoneInput = document.getElementById('phone');
 
     // show selected file name and simple preview for images
     fileInput.addEventListener('change', ()=>{
@@ -285,17 +278,6 @@
       }
       fileName.textContent = f.name;
     });
-
-    // helper: validate phone by pattern attribute and custom message
-    function validatePhone(){
-      const pattern = new RegExp(phoneInput.getAttribute('pattern'));
-      const errorEl = document.getElementById('phoneError');
-      if(phoneInput.value.trim() === ''){ errorEl.textContent = ''; return true; }
-      if(!pattern.test(phoneInput.value.trim())){ errorEl.textContent = 'الرجاء إدخال رقم هاتف جزائري صالح (مثال: +213 551234567)'; return false; }
-      errorEl.textContent = '';
-      return true;
-    }
-    phoneInput.addEventListener('input', validatePhone);
 
     // Accessibility: trap focus in modal when open
     function trapFocus(element){
@@ -317,8 +299,8 @@
     form.addEventListener('submit', (e)=>{
       e.preventDefault();
 
-      // basic browser validity + phone custom
-      if(!form.checkValidity() || !validatePhone()){
+      // basic browser validity
+      if(!form.checkValidity()){
         form.reportValidity();
         formStatus.textContent = 'يرجى تصحيح الحقول المطلوبة';
         formStatus.style.color = '#b32424';
@@ -340,7 +322,13 @@
       formStatus.style.color = 'green';
 
       // show modal summary
-      summary.innerHTML = `سجل: <strong>${escapeHtml(name)}</strong><br>هاتف: <strong>${escapeHtml(phone)}</strong><br>الخبرة: <strong>${escapeHtml(exp)}</strong><br/><br/>سنتصل بك لتأكيد الحجز.`;
+      summary.innerHTML = `تم تسجيلك بنجاح في الدورة!<br><br>
+      ملخص البيانات:<br>
+      الاسم الكامل: <strong>${escapeHtml(name)}</strong><br>
+      رقم الهاتف: <strong>${escapeHtml(phone)}</strong><br>
+      مستوى الخبرة: <strong>${escapeHtml(exp)}</strong><br><br>
+      سنتواصل معك قريبًا لتأكيد حجزك.`;
+
       modal.classList.add('open');
       modal.setAttribute('aria-hidden','false');
 
