@@ -171,32 +171,41 @@
       <div id="formStatus" role="status" aria-live="polite" class="small" style="min-height:20px"></div>
 
       
-<form action="https://script.google.com/macros/s/AKfycbzZURUQLNExVHNMFqKf5mEJdxLGGCNeX4sllj7Lgc9y5numZCoP098_6tOxdZNxU3OMkQ/exec" method="POST" enctype="multipart/form-data" target="_blank">
+<form action="https://script.google.com/macros/s/AKfycbxoDodpGI96CiVkBYTbymC_vq0i0rGMkrDaLfAH0OWNixR0Ky3Yl-E4ctbdAy_e6LgFbA/exec" method="POST" enctype="multipart/form-data" target="_blank">
 
-  <input type="text" name="الاسم_الكامل" required>
+  <label for="nom_complet">Nom Complet *</label>
+  <input type="text" id="nom_complet" name="Nom_Complet" required>
 
-  <input type="number" name="العمر" required>
+  <label for="age">Âge *</label>
+  <input type="number" id="age" name="Age" required>
 
-  <input type="email" name="البريد_الالكتروني" required>
+  <label for="email">Adresse email *</label>
+  <input type="email" id="email" name="Email" required>
 
-  <input type="tel" name="رقم_الهاتف" required>
+  <label for="tel">Numéro de téléphone *</label>
+  <input type="tel" id="tel" name="Numero_Telephone" required>
 
-  <input type="text" name="العنوان">
+  <label for="adresse">Adresse</label>
+  <input type="text" id="adresse" name="Adresse">
 
-  <select name="مستوى_الخبرة">
-    <option value="لا خبرة">لا خبرة</option>
-    <option value="خبرة قليلة">خبرة قليلة</option>
-    <option value="خبرة متوسطة">خبرة متوسطة</option>
-    <option value="خبرة عالية">خبرة عالية</option>
+  <label for="experience">Niveau d'expérience *</label>
+  <select id="experience" name="Niveau_Experience">
+    <option value="Pas d'expérience">Pas d'expérience</option>
+    <option value="Débutant">Débutant</option>
+    <option value="Intermédiaire">Intermédiaire</option>
+    <option value="Avancé">Avancé</option>
   </select>
 
-  <textarea name="ملاحظات"></textarea>
+  <label for="remarques">Remarques ou demandes spéciales</label>
+  <textarea id="remarques" name="Remarques"></textarea>
 
-  <input type="file" name="file">
+  <label for="file">Joindre un fichier (Certificat / Carte d'identité) - Facultatif</label>
+  <input type="file" id="file" name="file">
 
-  <input type="checkbox" name="الموافقة_على_الشروط" value="موافق" required>
+  <input type="checkbox" id="accept_conditions" name="Acceptation_Conditions" value="Accepté" required>
+  <label for="accept_conditions">J'accepte les conditions générales...</label>
 
-  <button type="submit">تأكيد التسجيل</button>
+  <button type="submit">Confirmer l'inscription</button>
 </form>
       
     </aside>
@@ -353,6 +362,7 @@
   </noscript>
 </body>
 </html>
+
 
 
 
