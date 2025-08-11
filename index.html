@@ -15,17 +15,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "دورة الحجامة العلاجية",
-    "description": "برنامج عملي ونظري مع أدلة أمان وتقنيات احترافية.",
-    "provider": {
-      "@type": "Organization",
-      "name": "حجامة بروفكس",
-      "sameAs": "https://example.com"
-    }
-  }
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    msg.textContent = 'جاري الإرسال...';
+    msg.className = '';
+    
+    fetch('https://script.google.com/macros/s/AKfycbwNbJtvo1pOQOwedRhLNr2QQbXlaRh78NwUwfVbYPonissVFNAglA_Xl41V1d7bjj4UHA/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            name: document.getElementById('name').value,
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value,
+            message: document.getElementById('message').value
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.result === "success") {
+            msg.textContent = 'تم إرسال طلبك بنجاح!';
+            msg.className = 'success';
+            form.reset();
+        } else {
+            msg.textContent = 'حدث خطأ، حاول مرة أخرى.';
+            msg.className = 'error';
+        }
+    })
+    .catch(() => {
+        msg.textContent = 'حدث خطأ في الاتصال.';
+        msg.className = 'error';
+    });
+});
+
   </script>
 
   <style>
@@ -376,3 +397,4 @@
   </noscript>
 </body>
 </html>
+
