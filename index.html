@@ -278,116 +278,37 @@
   </div>
 
   <script>
-    // ====== Elements ======
-    const form = document.getElementById('regForm');
-    const fileInput = document.getElementById('fileInput');
-    const fileName = document.getElementById('fileName');
-    const modal = document.getElementById('modal');
-    const closeModal = document.getElementById('closeModal');
-    const summary = document.getElementById('summary');
-    const submitBtn = document.getElementById('submitBtn');
-    const formStatus = document.getElementById('formStatus');
-
-    // show selected file name and simple preview for images
-    fileInput.addEventListener('change', ()=>{
-      const f = fileInput.files[0];
-      if(!f){ fileName.textContent = 'لم يتم رفع ملف'; return; }
-      // limit filesize to 4MB client-side
-      if(f.size > 4 * 1024 * 1024){
-        fileName.textContent = 'حجم الملف كبير جداً (أكبر من 4MB)';
-        return;
-      }
-      fileName.textContent = f.name;
-    });
-
-    // Accessibility: trap focus in modal when open
-    function trapFocus(element){
-      const focusable = element.querySelectorAll('a[href],button,textarea,input,select,[tabindex]:not([tabindex="-1"])');
-      const first = focusable[0];
-      const last = focusable[focusable.length -1];
-      function handle(e){
-        if(e.key === 'Tab'){
-          if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
-          else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+   form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    msg.textContent = 'جاري الإرسال...';
+    msg.className = '';
+    
+    fetch('https://script.google.com/macros/s/AKfycbwNbJtvo1pOQOwedRhLNr2QQbXlaRh78NwUwfVbYPonissVFNAglA_Xl41V1d7bjj4UHA/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            name: document.getElementById('name').value,
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value,
+            message: document.getElementById('message').value
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.result === "success") {
+            msg.textContent = 'تم إرسال طلبك بنجاح!';
+            msg.className = 'success';
+            form.reset();
+        } else {
+            msg.textContent = 'حدث خطأ، حاول مرة أخرى.';
+            msg.className = 'error';
         }
-        if(e.key === 'Escape'){ closeModal.click(); }
-      }
-      element.addEventListener('keydown', handle);
-      return ()=> element.removeEventListener('keydown', handle);
-    }
-
-    // form submit handler (client-side only)
-    form.addEventListener('submit', (e)=>{
-      e.preventDefault();
-
-      // basic browser validity
-      if(!form.checkValidity()){
-        form.reportValidity();
-        formStatus.textContent = 'يرجى تصحيح الحقول المطلوبة';
-        formStatus.style.color = '#b32424';
-        return;
-      }
-
-      // disable and show loading state
-      submitBtn.disabled = true;
-      const originalText = submitBtn.textContent;
-      submitBtn.textContent = '...جارٍ الإرسال';
-
-      const data = new FormData(form);
-      const name = data.get('fullname') || '-';
-      const phone = data.get('phone') || '-';
-      const exp = data.get('experience') || '-';
-
-      // show inline success message immediately for UX
-      formStatus.textContent = 'تم استلام الطلب — جارٍ تجهيز التأكيد.';
-      formStatus.style.color = 'green';
-
-      // show modal summary
-      summary.innerHTML = `تم تسجيلك بنجاح في الدورة!<br><br>
-      ملخص البيانات:<br>
-      الاسم الكامل: <strong>${escapeHtml(name)}</strong><br>
-      رقم الهاتف: <strong>${escapeHtml(phone)}</strong><br>
-      مستوى الخبرة: <strong>${escapeHtml(exp)}</strong><br><br>
-      سنتواصل معك قريبًا لتأكيد حجزك.`;
-
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden','false');
-
-      // trap focus
-      const release = trapFocus(modal);
-      // focus close button
-      closeModal.focus();
-
-      // Simulate a network send (developer: replace with actual fetch to server)
-      // IMPORTANT: This is client-side only. Integrate with backend endpoint to persist registrations.
-      setTimeout(()=>{
-        // after "sent" allow re-submission if needed
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-      }, 1500);
+    })
+    .catch(() => {
+        msg.textContent = 'حدث خطأ في الاتصال.';
+        msg.className = 'error';
     });
-
-    closeModal.addEventListener('click', ()=>{
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden','true');
-      // reset status and form
-      form.reset();
-      fileName.textContent = 'لم يتم رفع ملف';
-      formStatus.textContent = '';
-    });
-
-    // close modal on outside click
-    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal.click(); });
-
-    // small html-escape helper
-    function escapeHtml(s){
-      return String(s).replace(/[&<>\"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c]; });
-    }
-
-    // Improve image loading on slow connections: add noscript fallback
-    document.addEventListener('DOMContentLoaded', ()=>{
-      // If you want to implement progressive image loading, you can replace src with data-src and lazyload here
-    });
+});
 
   </script>
 
@@ -397,4 +318,5 @@
   </noscript>
 </body>
 </html>
+
 
