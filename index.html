@@ -10,7 +10,168 @@
   <meta property="og:image" content="https://images.unsplash.com/photo-1584467735874-44cc1f54d6b3?q=80&w=1600&auto=format&fit=crop" />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#0f766e" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج التسجيل</title>
+    <style>
+        /* الخطوط والألوان الأساسية */
+        body {
+            font-family: 'Tajawal', sans-serif; /* استخدم خط عربي عصري */
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
 
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+
+        /* حاوية النموذج الرئيسية */
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            direction: rtl;
+            text-align: right;
+        }
+
+        /* عنوان النموذج */
+        h2 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* وصف النموذج */
+        .form-description {
+            font-size: 1rem;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* تنسيق الحقول */
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-size: 0.95rem;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            background-color: #fff;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* تصميم زر التأكيد */
+        button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #2ecc71; /* لون أخضر جذاب */
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        button[type="submit"]:hover {
+            background-color: #27ae60; /* لون أخضر أغمق عند التمرير */
+            transform: translateY(-2px);
+        }
+
+        button[type="submit"]:active {
+            transform: translateY(0);
+        }
+
+        /* تنسيق حقل الموافقة */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .checkbox-group input {
+            margin-left: 10px;
+            transform: scale(1.2);
+        }
+
+        /* تنسيق حقل رفع الملف */
+        .file-upload-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        .file-upload-group label {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            .form-row .form-group {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
@@ -386,6 +547,7 @@
   </noscript>
 </body>
 </html>
+
 
 
 
