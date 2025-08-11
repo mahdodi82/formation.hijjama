@@ -1,138 +1,390 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>آلة التدليك المريحة</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <style> body { font-family: 'Cairo', sans-serif; } </style>
-</head>
-<body class="bg-gray-50 text-gray-800">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>تسجيل - دورة الحجامة العلاجية</title>
+  <meta name="description" content="سجّل الآن في دورة الحجامة العلاجية — برنامج عملي ونظري مع شهادة معتمدة ومعايير سلامة وتعقيم. المقاعد محدودة." />
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="دورة الحجامة العلاجية - تسجيل" />
+  <meta property="og:description" content="سجّل الآن في دورة الحجامة العلاجية — برنامج عملي ونظري مع شهادة معتمدة ومعايير سلامة وتعقيم." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1584467735874-44cc1f54d6b3?q=80&w=1600&auto=format&fit=crop" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0f766e" />
 
-  <!-- Header -->
-  <header class="bg-blue-100 p-4 text-center shadow">
-    <h1 class="text-3xl font-bold text-blue-700 flex justify-center items-center gap-2">
-      <i data-lucide="cpu" class="w-6 h-6 text-blue-600"></i>
-      آلة التدليك المريحة
-      <i data-lucide="heart" class="w-6 h-6 text-blue-600"></i>
-    </h1>
-    <p class="mt-2 text-blue-600">راحة فورية لجميع عضلات جسمك بعد يوم مرهق </p>
-  </header>
+  <!-- Fonts performance -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- صور المنتج -->
-  <section class="p-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
-      <img src="images/IMG_9959.jpg" alt="آلة تدليك 1" class="rounded shadow">
-      <img src="images/IMG_9969.jpg" alt="آلة تدليك 2" class="rounded shadow">
-      <img src="images/IMG_9973.jpg" alt="الرؤوس" class="rounded shadow">
-      <img src="images/IMG_9974.jpg" alt="غطاء قماشي" class="rounded shadow">
-    </div>
-  </section>
-
-  <!-- مميزات المنتج -->
-  <section class="p-4 bg-white rounded-xl shadow max-w-3xl mx-auto mt-4">
-    <h2 class="text-2xl font-bold text-blue-700 mb-2">لماذا تختار هذه الآلة؟ 💡</h2>
-    <ul class="list-disc pr-6 space-y-2 text-lg text-gray-700">
-      <li><i data-lucide="battery-charging" class="inline w-5 h-5 text-blue-500"></i> سلكي لتستخدمه بكل أريحية في الوقت الذي يناسبك.</li>
-      <li><i data-lucide="tool" class="inline w-5 h-5 text-blue-500"></i> يأتي بـ4 رؤوس لمختلف عضلات الجسم بما في ذلك رأس لتنظيف تشققات الكعب.</li>
-      <li><i data-lucide="droplet" class="inline w-5 h-5 text-blue-500"></i> غطاء قماشي ناعم يوضع على الرؤوس لراحة إضافية وحماية البشرة.</li>
-      <li><i data-lucide="wind" class="inline w-5 h-5 text-blue-500"></i> مثالية لمختلف العضلات – الرقبة، الظهر، السيقان، وحتى الكعبين.</li>
-      <li><i data-lucide="shield-check" class="inline w-5 h-5 text-blue-500"></i> تصميم آمن وسهل التنظيف.</li>
-    </ul>
-  </section>
-<!-- السعر -->
-<section class="p-4 bg-gradient-to-r from-yellow-100 to-yellow-200 rounded-xl shadow max-w-3xl mx-auto mt-4 text-center border border-yellow-400">
-  <h2 class="text-3xl font-extrabold text-yellow-700 mb-2 tracking-wide">
-     السعر الحالي: <span class="text-red-600">3500 دج فقط!</span>
-  </h2>
-  <p class="text-lg text-yellow-800">لفترة محدودة – اغتنم الفرصة الآن!</p>
-</section>
-
-  <!-- عداد التنازلي -->
-  <section class="p-4 text-center mt-6">
-    <h3 class="text-xl text-blue-800 font-bold"> سارع بالطلب الآن!</h3>
-    <div id="countdown" class="text-3xl font-bold text-red-600 mt-2"></div>
-  </section>
-
-  <!-- آراء العملاء -->
-  <section class="p-4 mt-6 bg-blue-50 rounded-xl max-w-3xl mx-auto">
-    <h2 class="text-2xl font-bold text-blue-700 mb-4">💬 آراء العملاء:</h2>
-    <div class="space-y-4 text-gray-700">
-      <div class="bg-white p-3 rounded shadow">
-        <i data-lucide="quote" class="inline w-5 h-5 text-blue-500"></i>
-        "الرؤوس الأربعة تبديل سريع، والتغطية القماشية تخلي التدليك أكثر راحة!"
-      </div>
-      <div class="bg-white p-3 rounded shadow">
-        <i data-lucide="quote" class="inline w-5 h-5 text-blue-500"></i>
-        "الكعبين صار نظيف وناعم بفضل الرأس المخصص."
-      </div>
-      <div class="bg-white p-3 rounded shadow">
-        <i data-lucide="quote" class="inline w-5 h-5 text-blue-500"></i>
-        "خفت الآلام بعد يوم طويل، حجمها مناسب للسفر."
-      </div>
-    </div>
-  </section>
-
-  <!-- طلب المنتج -->
-  <section class="p-4 mt-6 max-w-xl mx-auto">
-    <h2 class="text-xl font-bold text-center text-blue-700 mb-4"> اطلب جهازك الآن:</h2>
-    <form id="my-form" class="space-y-4 bg-white p-4 rounded-xl shadow">
-      <input type="text" name="name" placeholder="الاسم الكامل" class="w-full p-2 border rounded" required>
-      <input type="tel" name="phone" placeholder="رقم الهاتف" class="w-full p-2 border rounded" required>
-      <select name="state" class="w-full p-2 border rounded" required>
-        <option disabled selected>اختر الولاية</option>
-        <!-- جميع الولايات -->
-        <option>أدرار</option><option>الشلف</option><option>الأغواط</option><option>أم البواقي</option>
-        <option>باتنة</option><option>بجاية</option><option>بسكرة</option><option>بشار</option>
-        <option>البليدة</option><option>البويرة</option><option>تمنراست</option><option>تبسة</option>
-        <option>تلمسان</option><option>تيارت</option><option>تيزي وزو</option><option>الجزائر</option>
-        <option>الجلفة</option><option>جيجل</option><option>سطيف</option><option>سعيدة</option>
-        <option>سكيكدة</option><option>سيدي بلعباس</option><option>عنابة</option><option>قالمة</option>
-        <option>قسنطينة</option><option>المدية</option><option>مستغانم</option><option>المسيلة</option>
-        <option>معسكر</option><option>ورقلة</option><option>وهران</option><option>البيض</option>
-        <option>إليزي</option><option>برج بوعريريج</option><option>بومرداس</option><option>الطارف</option>
-        <option>تندوف</option><option>تيسمسيلت</option><option>الوادي</option><option>خنشلة</option>
-        <option>سوق أهراس</option><option>تيبازة</option><option>ميلة</option><option>عين الدفلى</option>
-        <option>النعامة</option><option>عين تموشنت</option><option>غرداية</option><option>غليزان</option>
-        <option>تميمون</option><option>أولاد جلال</option><option>عين صالح</option><option>عين قزام</option>
-        <option>تقرت</option><option>جانت</option><option>المغير</option><option>المنيعة</option>
-      </select>
-      <input type="text" name="street" placeholder="الشارع أو الحي" class="w-full p-2 border rounded" required>
-      <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
-        اطلب الآن
-      </button>
-    </form>
-    <div id="message" class="mt-4"></div>
-  </section>
-
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    lucide.createIcons();
-    const form = document.getElementById('my-form');
-    const msg = document.getElementById('message');
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxkawuc8xbXBEFZjRj6NR8HygoR1-7e87ko1owxTBaXTAQJAIqH8lqo7-LXbjMokO0iaw/exec';
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', body: new FormData(form) })
-        .then(() => { msg.style.color='green'; msg.innerText='✅ تم الإرسال بنجاح!'; form.reset(); })
-        .catch(() => { msg.style.color='red'; msg.innerText='❌ حدث خطأ، حاول مرة أخرى.'; });
-    });
-    // عداد التنازلي
-    const cd = document.getElementById('countdown'),
-          end = Date.now() + 24*60*60*1000;
-    setInterval(() => {
-      const d = end - Date.now();
-      if (d<0) { cd.innerText="انتهى العرض!"; return; }
-      const h=Math.floor((d%86400000)/3600000),
-            m=Math.floor((d%3600000)/60000),
-            s=Math.floor((d%60000)/1000);
-      cd.innerText = `${h}س ${m}د ${s}ث`;
-    }, 1000);
+  <!-- Structured data: Course / Event -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "دورة الحجامة العلاجية",
+    "description": "برنامج عملي ونظري مع أدلة أمان وتقنيات احترافية.",
+    "provider": {
+      "@type": "Organization",
+      "name": "حجامة بروفكس",
+      "sameAs": "https://example.com"
+    }
+  }
   </script>
 
-  <footer class="text-center p-4 text-gray-600">© 2025 جميع الحقوق محفوظة</footer>
+  <style>
+    /* ========== Variables ========== */
+    :root{
+      --bg-img: url('https://images.unsplash.com/photo-1584467735874-44cc1f54d6b3?q=80&w=1600&auto=format&fit=crop');
+      --accent-1: #b48b57; /* warm gold */
+      --accent-2: #0f766e; /* deep teal */
+      --card: rgba(255,255,255,0.98);
+      --glass: rgba(255,255,255,0.06);
+      --radius: 14px;
+      --max-width: 1100px;
+      --shadow: 0 12px 40px rgba(2,6,23,0.35);
+      font-family: 'Cairo', 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    /* ========== Reset / Base ========== */
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{
+      background-image: linear-gradient(120deg, rgba(6,10,15,0.62), rgba(6,10,15,0.36)), var(--bg-img);
+      background-size:cover;background-position:center;
+      display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:28px;gap:20px;min-height:100vh;color:#071016;
+      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    }
+
+    /* Container */
+    .wrap{width:100%;max-width:var(--max-width);display:grid;grid-template-columns:1fr 460px;gap:28px;align-items:start}
+
+    /* HERO */
+    .hero{
+      color:white;padding:30px;border-radius:var(--radius);background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));backdrop-filter: blur(6px);box-shadow:var(--shadow);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.06);
+    }
+    .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg, rgba(180,139,87,0.06), transparent);pointer-events:none}
+    .logo{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    .mark{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent-1),#e0b77f);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(180,139,87,0.18)}
+    .mark svg{width:34px;height:34px;fill:white}
+    .logo h3{margin:0;font-size:18px;font-weight:700}
+    .logo .tag{font-size:13px;opacity:0.95;color:rgba(255,255,255,0.9)}
+
+    .hero h1{margin:6px 0 12px;font-size:32px;line-height:1.05;font-weight:700}
+    .hero p{margin:0 0 18px;font-size:15px;opacity:0.95}
+    .features{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .feature{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.04);padding:10px 14px;border-radius:10px;font-weight:700}
+
+    .cert{display:flex;gap:12px;align-items:center;margin-top:16px}
+    .badge{background:linear-gradient(180deg,#fff, #f7f3ee);padding:8px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);box-shadow:0 8px 20px rgba(2,6,23,0.06)}
+
+    /* CARD (FORM) */
+    .card{background:var(--card);padding:22px;border-radius:var(--radius);box-shadow:0 18px 50px rgba(2,6,23,0.28);border:1px solid rgba(15,21,29,0.04)}
+    .card h2{margin:0 0 6px;font-size:20px}
+    .muted{color:#375151;font-size:14px;margin-bottom:12px}
+
+    form{display:flex;flex-direction:column;gap:12px}
+    label{font-size:13px;color:#071016;display:block;margin-bottom:6px;font-weight:600}
+    input[type="text"], input[type="email"], input[type="tel"], input[type="number"], select, textarea{
+      width:100%;padding:12px;border-radius:10px;border:1px solid #e6e6e6;font-size:15px;background:transparent;transition:all .14s ease
+    }
+    input:focus, textarea:focus, select:focus{outline:none;box-shadow:0 10px 30px rgba(15,118,110,0.06);border-color:rgba(15,118,110,0.45)}
+    textarea{min-height:110px}
+
+    .two{display:flex;gap:10px}
+    .two > *{flex:1}
+
+    .file{display:flex;align-items:center;gap:10px}
+    .file input[type=file]{display:none}
+    .file .btn{background:transparent;border:1px dashed #d3c7b1;padding:8px 12px;border-radius:10px;font-weight:700;color:#5d472f;cursor:pointer}
+
+    .consent{display:flex;gap:10px;align-items:center;font-size:14px}
+    .consent input{transform:translateY(2px)}
+
+    .submit{display:flex;gap:10px;align-items:center;margin-top:6px}
+    button.primary{flex:1;background:linear-gradient(90deg,var(--accent-1),#9c6f45);color:white;padding:12px;border-radius:12px;border:0;font-weight:800;cursor:pointer;box-shadow:0 8px 30px rgba(180,139,87,0.18);transition:transform .12s ease}
+    button.primary:active{transform:translateY(1px)}
+    button[disabled]{opacity:0.6;cursor:not-allowed}
+
+    .small{font-size:13px;color:#6b6b6b}
+
+    /* validation helpers */
+    .field-error{color:#b32424;font-size:13px}
+    .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+
+    /* gallery */
+    .gallery-section{width:100%;max-width:var(--max-width);padding:18px;border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);border:1px solid rgba(15,21,29,0.04)}
+    .gallery-section h2{text-align:center;margin-top:0;font-size:22px;font-weight:700;color:var(--accent-2)}
+    .image-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:14px;margin-top:18px}
+    .image-grid img{width:100%;height:220px;border-radius:12px;box-shadow:0 8px 20px rgba(2,6,23,0.08);object-fit:cover;transition:transform .2s ease}
+    .image-grid img:hover{transform:scale(1.02)}
+
+    /* modal */
+    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(rgba(3,6,12,0.45),rgba(3,6,12,0.45));z-index:60;opacity:0;pointer-events:none;transition:opacity .18s ease}
+    .modal.open{opacity:1;pointer-events:auto}
+    .modal .box{background:white;padding:18px;border-radius:12px;max-width:520px;width:94%;box-shadow:0 20px 60px rgba(2,6,23,0.5)}
+    .actions-row{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+    .btn-ghost{background:transparent;border:1px solid #ddd;padding:8px 12px;border-radius:8px}
+
+    /* subtle responsive */
+    @media (max-width:980px){.wrap{grid-template-columns:1fr}.hero{order:2}}
+    @media (max-width:600px){body{padding:14px}.gallery-section h2{font-size:20px}.image-grid img{height:160px}}
+
+    /* focus-visible for better accessibility */
+    :focus{outline: none}
+    :focus-visible{outline:3px solid rgba(15,118,110,0.18);outline-offset:3px;border-radius:8px}
+
+    /* prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+  </style>
+</head>
+<body>
+  <div class="wrap" role="main">
+
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="logo">
+        <div class="mark" aria-hidden>
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden focusable="false"><path d="M3 8c0-2.2 2.7-4 6-4s6 1.8 6 4v1h2c1.1 0 2 .9 2 2v1c0 3.3-3.1 6-7 6H8c-4 0-7-2.7-7-6V10c0-1.1.9-2 2-2h0z"/></svg>
+        </div>
+        <div>
+          <h3>حجامة بروفكس - دورات احترافية</h3>
+          <div class="tag">تكوين عملي بنهج آمن وعلمي</div>
+        </div>
+      </div>
+
+      <h1 id="heroTitle">دورة الحجامة العلاجية - احترافية ومُعتمدة</h1>
+      <p>برنامج مكثف عملي ونظري مع أدلة أمان، تقنيات حديثة، وتطبيقات سريرية حقيقية. مناسب للممارسين والمهتمين بطب الشفاء التقليدي المدعوم بالمعايير.</p>
+      <div class="features" aria-hidden>
+        <div class="feature">🏥 تطبيق عملي مباشر</div>
+        <div class="feature">📜 شهادة معتمدة</div>
+        <div class="feature">🔒 معايير سلامة وتعقيم</div>
+      </div>
+
+      <div class="cert" aria-hidden>
+        <div class="badge">🎖</div>
+        <div class="txt">شهادة حضور ونجاح مع توقيع المدرب</div>
+      </div>
+    </section>
+
+    <aside class="card" aria-labelledby="formTitle">
+      <h2 id="formTitle">نموذج التسجيل</h2>
+      <div class="muted">املأ المعلومات لإحراز مقعدك — المقاعد محدودة</div>
+
+      <!-- Success / Error live region -->
+      <div id="formStatus" role="status" aria-live="polite" class="small" style="min-height:20px"></div>
+
+      <form id="regForm" autocomplete="on" novalidate>
+
+        <div class="two">
+          <div>
+            <label for="fullname">الاسم الكامل <span aria-hidden style="color:#c0392b">*</span></label>
+            <input aria-required="true" id="fullname" name="fullname" type="text" placeholder="الاسم واللقب" required aria-describedby="fullnameHelp" />
+            <div id="fullnameHelp" class="visually-hidden">اكتب اسمك الكامل كما في الهوية.</div>
+          </div>
+          <div>
+            <label for="age">العمر</label>
+            <input id="age" name="age" type="number" min="15" max="100" placeholder="مثال: 32" />
+          </div>
+        </div>
+
+        <div class="two">
+          <div>
+            <label for="phone">رقم الهاتف <span aria-hidden style="color:#c0392b">*</span></label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="+213 5X XX XX XX" required pattern="^(?:\+?213|0)(?:5|6|7)\s?\d{2}\s?\d{2}\s?\d{2}$" aria-describedby="phoneHelp" />
+            <div id="phoneHelp" class="small">مثال صالح: +213 551234567 أو 055 12 34 56</div>
+            <div id="phoneError" class="field-error" aria-live="polite"></div>
+          </div>
+          <div>
+            <label for="email">البريد الإلكتروني</label>
+            <input id="email" name="email" type="email" placeholder="example@mail.com" />
+          </div>
+        </div>
+
+        <label for="address">العنوان</label>
+        <input id="address" name="address" type="text" placeholder="المدينة، الحي..." />
+
+        <label for="experience">مستوى الخبرة</label>
+        <select id="experience" name="experience">
+          <option value="لاخبرة">لا خبرة</option>
+          <option value="مبتدئ">مبتدئ</option>
+          <option value="متوسط">متوسط</option>
+          <option value="متقدم">متقدم</option>
+        </select>
+
+        <label for="notes">ملاحظات أو طلبات خاصة</label>
+        <textarea id="notes" name="notes" placeholder="أضف ملاحظاتك هنا..."></textarea>
+
+        <label for="fileInput">رفع ملف (شهادة / بطاقة تعريف) - اختياري</label>
+        <div class="file">
+          <label class="btn" for="fileInput">اختر ملف</label>
+          <input id="fileInput" name="file" type="file" accept="image/*,.pdf" />
+          <span class="small" id="fileName">لم يتم رفع ملف</span>
+        </div>
+
+        <div class="consent">
+          <input id="agree" name="agree" type="checkbox" required aria-required="true" />
+          <label for="agree">أوافق على شروط الحضور والالتزام بتعليمات السلامة <span aria-hidden style="color:#c0392b">*</span></label>
+        </div>
+
+        <div class="submit">
+          <button type="submit" class="primary" id="submitBtn" aria-live="polite">تأكيد التسجيل</button>
+        </div>
+        <div class="small">سيتم الاتصال بك عبر الهاتف لتأكيد الحجز وإرسال تفاصيل المكان.</div>
+      </form>
+    </aside>
+
+  </div>
+  
+  <section class="gallery-section" aria-labelledby="galleryTitle">
+    <h2 id="galleryTitle">لحظات من الدورات السابقة</h2>
+    <div class="image-grid" aria-hidden="false">
+      <!-- استخدمت loading=lazy وتقنيات بسيطة للسرعة -->
+      <img loading="lazy" src="https://c.top4top.io/p_351011hhk8.jpg" alt="متدربون في دورة الحجامة العلاجية - تدريب عملي" width="800" height="550">
+      <img loading="lazy" src="https://b.top4top.io/p_3510wy8uu7.jpg" alt="المدرب يشرف على تطبيق الحجامة" width="800" height="550">
+      <img loading="lazy" src="https://a.top4top.io/p_3510w4u2y6.jpg" alt="نقاش عملي بين المتدربين" width="800" height="550">
+      <img loading="lazy" src="https://l.top4top.io/p_35103tlyl5.jpg" alt="صورة جماعية مع الشهادات" width="800" height="550">
+      <img loading="lazy" src="https://k.top4top.io/p_35108ko304.jpg" alt="تطبيق عملي للحجامة الجافة" width="800" height="550">
+      <img loading="lazy" src="https://j.top4top.io/p_3510cmyl63.jpg" alt="متدربة تطبق الحجامة تحت إشراف" width="800" height="550">
+      <img loading="lazy" src="https://i.top4top.io/p_3510zig8o2.jpg" alt="المشاركون مستلمون لشهاداتهم" width="800" height="550">
+      <img loading="lazy" src="https://h.top4top.io/p_3510oxrwb1.jpg" alt="تطبيق الحجامة الرطبة بدقة" width="800" height="550">
+      <img loading="lazy" src="https://l.top4top.io/p_3510830sv2.jpg" alt="تسليم الشهادة بعد إتمام الدورة" width="800" height="550">
+      <img loading="lazy" src="https://k.top4top.io/p_35101hr071.jpg" alt="ورشة عمل تطبيقية للحجامة" width="800" height="550">
+    </div>
+  </section>
+
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="box">
+      <h3 id="modalTitle">تم إرسال التسجيل</h3>
+      <p id="summary">شكرًا! تم استلام طلبك — سنتواصل معك خلال 48 ساعة لتأكيد الحجز.</p>
+      <div class="actions-row">
+        <button class="btn-ghost" id="closeModal">إغلاق</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ====== Elements ======
+    const form = document.getElementById('regForm');
+    const fileInput = document.getElementById('fileInput');
+    const fileName = document.getElementById('fileName');
+    const modal = document.getElementById('modal');
+    const closeModal = document.getElementById('closeModal');
+    const summary = document.getElementById('summary');
+    const submitBtn = document.getElementById('submitBtn');
+    const formStatus = document.getElementById('formStatus');
+    const phoneInput = document.getElementById('phone');
+
+    // show selected file name and simple preview for images
+    fileInput.addEventListener('change', ()=>{
+      const f = fileInput.files[0];
+      if(!f){ fileName.textContent = 'لم يتم رفع ملف'; return; }
+      // limit filesize to 4MB client-side
+      if(f.size > 4 * 1024 * 1024){
+        fileName.textContent = 'حجم الملف كبير جداً (أكبر من 4MB)';
+        return;
+      }
+      fileName.textContent = f.name;
+    });
+
+    // helper: validate phone by pattern attribute and custom message
+    function validatePhone(){
+      const pattern = new RegExp(phoneInput.getAttribute('pattern'));
+      const errorEl = document.getElementById('phoneError');
+      if(phoneInput.value.trim() === ''){ errorEl.textContent = ''; return true; }
+      if(!pattern.test(phoneInput.value.trim())){ errorEl.textContent = 'الرجاء إدخال رقم هاتف جزائري صالح (مثال: +213 551234567)'; return false; }
+      errorEl.textContent = '';
+      return true;
+    }
+    phoneInput.addEventListener('input', validatePhone);
+
+    // Accessibility: trap focus in modal when open
+    function trapFocus(element){
+      const focusable = element.querySelectorAll('a[href],button,textarea,input,select,[tabindex]:not([tabindex="-1"])');
+      const first = focusable[0];
+      const last = focusable[focusable.length -1];
+      function handle(e){
+        if(e.key === 'Tab'){
+          if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+          else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+        }
+        if(e.key === 'Escape'){ closeModal.click(); }
+      }
+      element.addEventListener('keydown', handle);
+      return ()=> element.removeEventListener('keydown', handle);
+    }
+
+    // form submit handler (client-side only)
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+
+      // basic browser validity + phone custom
+      if(!form.checkValidity() || !validatePhone()){
+        form.reportValidity();
+        formStatus.textContent = 'يرجى تصحيح الحقول المطلوبة';
+        formStatus.style.color = '#b32424';
+        return;
+      }
+
+      // disable and show loading state
+      submitBtn.disabled = true;
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = '...جارٍ الإرسال';
+
+      const data = new FormData(form);
+      const name = data.get('fullname') || '-';
+      const phone = data.get('phone') || '-';
+      const exp = data.get('experience') || '-';
+
+      // show inline success message immediately for UX
+      formStatus.textContent = 'تم استلام الطلب — جارٍ تجهيز التأكيد.';
+      formStatus.style.color = 'green';
+
+      // show modal summary
+      summary.innerHTML = `سجل: <strong>${escapeHtml(name)}</strong><br>هاتف: <strong>${escapeHtml(phone)}</strong><br>الخبرة: <strong>${escapeHtml(exp)}</strong><br/><br/>سنتصل بك لتأكيد الحجز.`;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+
+      // trap focus
+      const release = trapFocus(modal);
+      // focus close button
+      closeModal.focus();
+
+      // Simulate a network send (developer: replace with actual fetch to server)
+      // IMPORTANT: This is client-side only. Integrate with backend endpoint to persist registrations.
+      setTimeout(()=>{
+        // after "sent" allow re-submission if needed
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }, 1500);
+    });
+
+    closeModal.addEventListener('click', ()=>{
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      // reset status and form
+      form.reset();
+      fileName.textContent = 'لم يتم رفع ملف';
+      formStatus.textContent = '';
+    });
+
+    // close modal on outside click
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal.click(); });
+
+    // small html-escape helper
+    function escapeHtml(s){
+      return String(s).replace(/[&<>\"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c]; });
+    }
+
+    // Improve image loading on slow connections: add noscript fallback
+    document.addEventListener('DOMContentLoaded', ()=>{
+      // If you want to implement progressive image loading, you can replace src with data-src and lazyload here
+    });
+
+  </script>
+
+  <noscript>
+    <style>.image-grid img{opacity:0.95}</style>
+    <div style="max-width:var(--max-width);margin:14px auto;padding:14px;background:#fff8;backdrop-filter:blur(2px);border-radius:10px">يُرجى تفعيل JavaScript لتحسين تجربة التسجيل وعرض الصور.</div>
+  </noscript>
 </body>
 </html>
-
