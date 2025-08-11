@@ -170,64 +170,34 @@
 
       <div id="formStatus" role="status" aria-live="polite" class="small" style="min-height:20px"></div>
 
-      <form id="regForm" autocomplete="on" novalidate>
-
-        <div class="two">
-          <div>
-            <label for="fullname">الاسم الكامل <span aria-hidden style="color:#c0392b">*</span></label>
-            <input aria-required="true" id="fullname" name="fullname" type="text" placeholder="الاسم واللقب" required aria-describedby="fullnameHelp" />
-            <div id="fullnameHelp" class="visually-hidden">اكتب اسمك الكامل كما في الهوية.</div>
-          </div>
-          <div>
-            <label for="age">العمر</label>
-            <input id="age" name="age" type="number" min="15" max="100" placeholder="مثال: 32" />
-          </div>
-        </div>
-
-        <div class="two">
-          <div>
-            <label for="phone">رقم الهاتف <span aria-hidden style="color:#c0392b">*</span></label>
-            <input id="phone" name="phone" type="text" placeholder="اكتب رقمك هنا" required aria-describedby="phoneHelp" />
-            <div id="phoneHelp" class="small">اكتب رقم الهاتف الذي تريد التواصل عليه.</div>
-          </div>
-          <div>
-            <label for="email">البريد الإلكتروني</label>
-            <input id="email" name="email" type="email" placeholder="example@mail.com" />
-          </div>
-        </div>
-
-        <label for="address">العنوان</label>
-        <input id="address" name="address" type="text" placeholder="المدينة، الحي..." />
-
-        <label for="experience">مستوى الخبرة</label>
-        <select id="experience" name="experience">
-          <option value="لاخبرة">لا خبرة</option>
-          <option value="مبتدئ">مبتدئ</option>
-          <option value="متوسط">متوسط</option>
-          <option value="متقدم">متقدم</option>
-        </select>
-
-        <label for="notes">ملاحظات أو طلبات خاصة</label>
-        <textarea id="notes" name="notes" placeholder="أضف ملاحظاتك هنا..."></textarea>
-
-        <label for="fileInput">رفع ملف (شهادة / بطاقة تعريف) - اختياري</label>
-        <div class="file">
-          <label class="btn" for="fileInput">اختر ملف</label>
-          <input id="fileInput" name="file" type="file" accept="image/*,.pdf" />
-          <span class="small" id="fileName">لم يتم رفع ملف</span>
-        </div>
-
-        <div class="consent">
-          <input id="agree" name="agree" type="checkbox" required aria-required="true" />
-          <label for="agree">أوافق على شروط الحضور والالتزام بتعليمات السلامة <span aria-hidden style="color:#c0392b">*</span></label>
-        </div>
-
-        <div class="submit">
-          <button type="submit" class="primary" id="submitBtn" aria-live="polite">تأكيد التسجيل</button>
       
-        </div>
-        <div class="small">سيتم الاتصال بك عبر الهاتف لتأكيد الحجز.</div>
-      </form>
+<form action="https://script.google.com/macros/s/AKfycbz64wVT35lw4-pp13nUsrDOJDGlry7Kwum49awreY_vx8lQVag3hcLg5ZNqYvbXBK34zQ/exec" method="POST" enctype="multipart/form-data" target="_blank">
+
+  <input type="text" name="الاسم_الكامل" required>
+
+  <input type="number" name="العمر" required>
+
+  <input type="email" name="البريد_الالكتروني" required>
+
+  <input type="tel" name="رقم_الهاتف" required>
+
+  <input type="text" name="العنوان">
+
+  <select name="مستوى_الخبرة">
+    <option value="لا خبرة">لا خبرة</option>
+    <option value="خبرة قليلة">خبرة قليلة</option>
+    <option value="خبرة متوسطة">خبرة متوسطة</option>
+    <option value="خبرة عالية">خبرة عالية</option>
+  </select>
+
+  <textarea name="ملاحظات"></textarea>
+
+  <input type="file" name="file">
+
+  <input type="checkbox" name="الموافقة_على_الشروط" value="موافق" required>
+
+  <button type="submit">تأكيد التسجيل</button>
+</form>
       
     </aside>
 
@@ -266,7 +236,6 @@
 
     // ====== Elements ======
     const form = document.getElementById('regForm');
-    const scriptURL = "script.google.com/macros/s/AKfycbyZh-0aNsM6CM4i2gdug67Gac_H3https://tLG7FrU9FkNzk5bxCpfrXjnfn4-4Yvy3IwyAzIPYA/exec";
     const fileInput = document.getElementById('fileInput');
     const fileName = document.getElementById('fileName');
     const modal = document.getElementById('modal');
@@ -384,6 +353,7 @@
   </noscript>
 </body>
 </html>
+
 
 
 
