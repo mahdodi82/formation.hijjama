@@ -15,6 +15,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
   <script type="application/ld+json">
+    <form method="post" action="https://script.google.com/macros/s/AKfycbwrFdxYz7V7kTZG3XZJ-wcaSMTcOCkgNjlAA5JDdUZRPzqldTyu1zS_1NQjoz4FVrcVuA/exec">
+  <label for="name">الاسم:</label><br>
+  <input type="text" id="name" name="الاسم"><br>
+  <label for="email">البريد الإلكتروني:</label><br>
+  <input type="email" id="email" name="البريد الإلكتروني"><br>
+  <input type="submit" value="إرسال">
+</form>
   {
     "@context": "https://schema.org",
     "@type": "Course",
@@ -266,13 +273,7 @@
     const summary = document.getElementById('summary');
     const submitBtn = document.getElementById('submitBtn');
     const formStatus = document.getElementById('formStatus');
-<form method="post" action="https://script.google.com/macros/s/AKfycbwrFdxYz7V7kTZG3XZJ-wcaSMTcOCkgNjlAA5JDdUZRPzqldTyu1zS_1NQjoz4FVrcVuA/exec">
-  <label for="name">الاسم:</label><br>
-  <input type="text" id="name" name="الاسم"><br>
-  <label for="email">البريد الإلكتروني:</label><br>
-  <input type="email" id="email" name="البريد الإلكتروني"><br>
-  <input type="submit" value="إرسال">
-</form>
+
     // show selected file name and simple preview for images
     fileInput.addEventListener('change', ()=>{
       const f = fileInput.files[0];
@@ -382,5 +383,6 @@
   </noscript>
 </body>
 </html>
+
 
 
