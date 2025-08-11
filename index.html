@@ -171,42 +171,67 @@
       <div id="formStatus" role="status" aria-live="polite" class="small" style="min-height:20px"></div>
 
       
-<form action="https://script.google.com/macros/s/AKfycbxoDodpGI96CiVkBYTbymC_vq0i0rGMkrDaLfAH0OWNixR0Ky3Yl-E4ctbdAy_e6LgFbA/exec" method="POST" enctype="multipart/form-data" target="_blank">
+<body>
+    <div class="container">
+        <h2>نموذج التسجيل</h2>
+        <p class="form-description">املأ المعلومات لإدراج مقعدك - المقاعد محدودة</p>
+        
+        <form action="https://script.google.com/macros/s/AKfycbxoDodpGI96CiVkBYTbymC_vq0i0rGMkrDaLfAH0OWNixR0Ky3Yl-E4ctbdAy_e6LgFbA/exec" method="POST" enctype="multipart/form-data" target="_blank">
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="full-name">الاسم الكامل *</label>
+                    <input type="text" id="full-name" name="Nom_Complet" placeholder="الاسم واللقب" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">العمر *</label>
+                    <input type="number" id="age" name="Age" placeholder="مثال: 32" required>
+                </div>
+            </div>
 
-  <label for="nom_complet">Nom Complet *</label>
-  <input type="text" id="nom_complet" name="Nom_Complet" required>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني *</label>
+                    <input type="email" id="email" name="Email" placeholder="example@mail.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف *</label>
+                    <input type="tel" id="phone" name="Numero_Telephone" placeholder="اكتب رقم الهاتف الذي تريد التواصل عليه" required>
+                </div>
+            </div>
 
-  <label for="age">Âge *</label>
-  <input type="number" id="age" name="Age" required>
+            <div class="form-group">
+                <label for="address">العنوان</label>
+                <input type="text" id="address" name="Adresse" placeholder="المدينة، الحي...">
+            </div>
 
-  <label for="email">Adresse email *</label>
-  <input type="email" id="email" name="Email" required>
+            <div class="form-group">
+                <label for="experience">مستوى الخبرة *</label>
+                <select id="experience" name="Niveau_Experience">
+                    <option value="لا خبرة">لا خبرة</option>
+                    <option value="خبرة قليلة">خبرة قليلة</option>
+                    <option value="خبرة متوسطة">خبرة متوسطة</option>
+                    <option value="خبرة عالية">خبرة عالية</option>
+                </select>
+            </div>
 
-  <label for="tel">Numéro de téléphone *</label>
-  <input type="tel" id="tel" name="Numero_Telephone" required>
+            <div class="form-group">
+                <label for="notes">ملاحظات أو طلبات خاصة</label>
+                <textarea id="notes" name="Remarques" placeholder="أضف ملاحظاتك هنا..."></textarea>
+            </div>
 
-  <label for="adresse">Adresse</label>
-  <input type="text" id="adresse" name="Adresse">
+            <div class="file-upload-group">
+                <label for="file-upload">رفع ملف (شهادة / بطاقة تعريف) - اختياري</label>
+                <input type="file" id="file-upload" name="file">
+            </div>
 
-  <label for="experience">Niveau d'expérience *</label>
-  <select id="experience" name="Niveau_Experience">
-    <option value="Pas d'expérience">Pas d'expérience</option>
-    <option value="Débutant">Débutant</option>
-    <option value="Intermédiaire">Intermédiaire</option>
-    <option value="Avancé">Avancé</option>
-  </select>
-
-  <label for="remarques">Remarques ou demandes spéciales</label>
-  <textarea id="remarques" name="Remarques"></textarea>
-
-  <label for="file">Joindre un fichier (Certificat / Carte d'identité) - Facultatif</label>
-  <input type="file" id="file" name="file">
-
-  <input type="checkbox" id="accept_conditions" name="Acceptation_Conditions" value="Accepté" required>
-  <label for="accept_conditions">J'accepte les conditions générales...</label>
-
-  <button type="submit">Confirmer l'inscription</button>
-</form>
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" name="Acceptation_Conditions" value="موافق" required>
+                <label for="terms">أوافق على شروط الحضور والالتزام بتعليمات السلامة *</label>
+            </div>
+            
+            <button type="submit">تأكيد التسجيل</button>
+        </form>
     </aside>
 
   </div>
@@ -361,6 +386,7 @@
   </noscript>
 </body>
 </html>
+
 
 
 
