@@ -170,6 +170,7 @@
       <div id="formStatus" role="status" aria-live="polite" class="small" style="min-height:20px"></div>
 
       <form id="regForm" autocomplete="on" novalidate>
+        <input type="hidden" name="Timestamp" id="Timestamp" />
 
         <div class="two">
           <div>
@@ -298,7 +299,7 @@
       return ()=> element.removeEventListener('keydown', handle);
     }
 
-    // form submit handler (client-side only)
+    // form submit handler
     form.addEventListener('submit', async (e)=>{
       e.preventDefault();
 
@@ -314,9 +315,12 @@
       submitBtn.disabled = true;
       const originalText = submitBtn.textContent;
       submitBtn.textContent = '...جارٍ الإرسال';
+      formStatus.textContent = 'يتم إرسال طلبك...';
+      formStatus.style.color = '#0f766e';
+
 
       const formData = new FormData(form);
-      formData.append('Timestamp', new Date().toLocaleString()); // إضافة الوقت والتاريخ
+      formData.append('Timestamp', new Date().toLocaleString());
 
       try {
         const response = await fetch(WEB_APP_URL, {
@@ -326,11 +330,9 @@
         const result = await response.json();
         
         if(result.result === 'success'){
-          // Show success message
-          formStatus.textContent = 'تم استلام الطلب بنجاح.';
+          formStatus.textContent = 'تم استلام الطلب بنجاح. سيتم عرض ملخص.';
           formStatus.style.color = 'green';
 
-          // Show modal summary
           const name = formData.get('fullname') || '-';
           const phone = formData.get('phone') || '-';
           const exp = formData.get('experience') || '-';
@@ -358,7 +360,6 @@
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
       }
-
     });
 
     closeModal.addEventListener('click', ()=>{
