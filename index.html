@@ -406,93 +406,96 @@
   <footer style="text-align:center;padding:22px;color:var(--muted)">
     © 2025 — الكنفدرالية الوطنية للصحة وحماية المريض والتضامن الاجتماعي
   </footer>
-
-  <script>
-    /* ---------- Utilities & Scroll Animations ---------- */
-    // Simple Intersection Observer for elements with .js-anim and panels
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('in-view');
-          observer.unobserve(e.target);
-        }
-      });
-    }, {threshold: 0.12});
-
-    document.querySelectorAll('.js-anim').forEach(el => observer.observe(el));
-    document.querySelectorAll('.panel').forEach(el => observer.observe(el));
-
-    /* ---------- Modal ---------- */
-    const modal = document.getElementById('modal');
-    function openModal(){
-      modal.style.display = 'flex';
-      modal.setAttribute('aria-hidden','false');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal(){
-      modal.style.display = 'none';
-      modal.setAttribute('aria-hidden','true');
-      document.body.style.overflow = '';
-    }
-    // close when clicking backdrop (but not panel)
-    modal.addEventListener('click', (ev) => {
-      if(ev.target === modal) closeModal();
-    });
-
-    /* ---------- Speciality Other ---------- */
-    function onSpecialityChange(value){
-      const other = document.getElementById('otherSpeciality');
-      if(value === 'other'){ other.style.display = 'block'; other.querySelector('input').focus(); }
-      else { other.style.display = 'none'; other.querySelector('input').value = ''; }
-    }
-
-    /* ---------- Form Handling (client-side) ---------- */
-    function handleSubmit(e){
-      e.preventDefault();
-      const form = document.getElementById('registrationForm');
-
-      // trigger HTML5 constraint validation
-      if(!form.checkValidity()){
-        form.reportValidity();
-        return false;
+<script>
+  /* ---------- Utilities & Scroll Animations ---------- */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        observer.unobserve(e.target);
       }
+    });
+  }, {threshold: 0.12});
 
-      const data = Object.fromEntries(new FormData(form).entries());
-      const res = document.getElementById('result');
-            const url = 'https://script.google.com/macros/s/AKfycbzpEEC_0DchuR_9BTkWPsCIHctPQ3MBWG8371b0SMK2Q_evPeIf3hAZ9-EGEdONVoraww/exec'; // استبدل هذا الرابط برابط السكربت الخاص بك
+  document.querySelectorAll('.js-anim').forEach(el => observer.observe(el));
+  document.querySelectorAll('.panel').forEach(el => observer.observe(el));
 
-      // Compose speciality label
-      let spec = data.speciality;
-      if(spec === 'other') spec = data.otherSpeciality || 'تخصص (غير محدد)';
+  /* ---------- Modal ---------- */
+  const modal = document.getElementById('modal');
+  function openModal(){
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+  modal.addEventListener('click', (ev) => {
+    if(ev.target === modal) closeModal();
+  });
 
-      // Show success (placeholder: integrate server/Sheets/email in production)
-      res.style.display = 'block';
-      res.innerHTML = `✅ تم استلام التسجيل لـ <strong>${(data.firstname||'') + ' ' + (data.lastname||'')}</strong><br>هاتف: <strong>${data.phone||'-'}</strong> — تخصص: <strong>${spec}</strong>`;
+  /* ---------- Speciality Other ---------- */
+  function onSpecialityChange(value){
+    const other = document.getElementById('otherSpeciality');
+    if(value === 'other'){ other.style.display = 'block'; other.querySelector('input').focus(); }
+    else { other.style.display = 'none'; other.querySelector('input').value = ''; }
+  }
 
-      // reset form (but keep result visible)
-      form.reset();
-      document.getElementById('otherSpeciality').style.display = 'none';
-      // smooth scroll to result
-      setTimeout(()=> res.scrollIntoView({behavior:'smooth',block:'center'}), 150);
+  /* ---------- Form Handling (client-side + Google Sheets) ---------- */
+  async function handleSubmit(e){
+    e.preventDefault();
+    const form = document.getElementById('registrationForm');
+    const res = document.getElementById('result');
+
+    if(!form.checkValidity()){
+      form.reportValidity();
       return false;
     }
 
-    function onReset(){
-      document.getElementById('registrationForm').reset();
-      document.getElementById('result').style.display = 'none';
+    const data = Object.fromEntries(new FormData(form).entries());
+    const url = "https://script.google.com/macros/s/AKfycbwkIfQMUXR0MOQF1YdC-_Kl24RC-mBItkTvAteubZMJO6zV-LkviaxNm7wIhDf4qt3I/exec";
+
+    res.style.display = 'block';
+    res.innerHTML = "⏳ جاري إرسال بياناتك...";
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        body: new FormData(form)
+      });
+
+      res.innerHTML = `✅ تم إرسال التسجيل بنجاح!<br>
+      <strong>${data.firstname || ''} ${data.lastname || ''}</strong> — ${data.phone || '-'}<br>
+      سنتواصل معك قريبًا بإذن الله.`;
+
+      form.reset();
       document.getElementById('otherSpeciality').style.display = 'none';
+      setTimeout(()=> res.scrollIntoView({behavior:'smooth',block:'center'}), 200);
+
+    } catch (error) {
+      res.innerHTML = "❌ حدث خطأ أثناء الإرسال. حاول مجددًا.";
+      console.error("Form submit error:", error);
     }
+    return false;
+  }
 
-    // Accessibility: close modal on Escape
-    document.addEventListener('keydown', (e) => {
-      if(e.key === 'Escape') {
-        if(modal.style.display === 'flex') closeModal();
-      }
-    });
+  function onReset(){
+    document.getElementById('registrationForm').reset();
+    document.getElementById('result').style.display = 'none';
+    document.getElementById('otherSpeciality').style.display = 'none';
+  }
 
-    // small: enable pointer cursor for dynamically added buttons/icons
-    document.querySelectorAll('.btn, .modal-close').forEach(b => b.style.cursor = 'pointer');
-  </script>
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') {
+      if(modal.style.display === 'flex') closeModal();
+    }
+  });
+
+  document.querySelectorAll('.btn, .modal-close').forEach(b => b.style.cursor = 'pointer');
+</script>
+
 </body>
 </html>
-
